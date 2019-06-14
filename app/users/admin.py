@@ -5,7 +5,16 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.admin import UserAdmin
 
 
+
 @admin.register(models.CustomUser)
+
+
+#whatever ectra fields are added in CustomUser model ,to show it in admin panel,we have toadd that
+#field here below in Fieldset
+
+
+
+
 class CustomUserAdmin(UserAdmin):
     add_form = forms.CustomUserCreateForm
     form = forms.CustomUserChangeForm
@@ -19,6 +28,13 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {"fields": ("email", "password")}),
         (_("Personal Info"), {"fields": ("first_name", "last_name",)}),
+
+
+          (_("Extra added Fields "), {"fields": ("username", "points_available",)}),
+
+
+
+
         (_("Permissons"), {"fields": ("is_staff",
                                       "is_active",
                                       "is_superuser",

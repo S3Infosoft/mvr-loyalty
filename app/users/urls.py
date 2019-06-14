@@ -2,6 +2,7 @@ from . import views
 
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from loyalty import views as loyalty_views
 
 password_urls = [
     path("change/done/", auth_views.PasswordChangeDoneView.as_view(),
@@ -24,5 +25,8 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("register/", views.RegisterView.as_view(), name="register"),
     path("password_", include(password_urls)),
-    path("", views.index, name="index"),
+    path("coupens/", views.index, name="index"),
+    path("deals/", views.deals, name="deals"),
+    path("profile/",loyalty_views.profile,name="profile")
+
 ]

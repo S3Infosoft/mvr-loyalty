@@ -25,3 +25,4 @@ class RegisterForm(UserCreationForm):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.fields["first_name"].required = True
+

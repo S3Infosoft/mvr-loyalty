@@ -1,0 +1,15 @@
+.myfont{
+
+
+	font-family: 'Domine', serif;
+	color: #63776B  ;
+	font-size: 18px;
+	text-transform: lowercase;
+}
+
+.ok {
+  border: 2px solid red;
+  border-radius: 12px;
+  position: absolute;
+}
+

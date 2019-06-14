@@ -13,10 +13,10 @@
   <!-- Page Heading -->
 
 <div class="btn-group btn-group-lg">
-  <a href="{% url 'index' %}" class="btn btn-outline-info active">Available Coupens &nbsp;
+  <a href="{% url 'index' %}" class="btn btn-outline-info">Available Coupens &nbsp;
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-  <a href="{% url 'deals' %}" class="btn btn-outline-info">Special Deals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a href="{% url 'deals' %}" class="btn btn-outline-info active">Special Deals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 </div>
 
 
@@ -34,26 +34,26 @@
   
 
                
-   {% for reward in rewards %}
+   {% for deal in deals %}
       
-       {% if reward.points_required < current_user_points %}
+       {% if deal.points_required < current_user_points %}
                       <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-success shadow h-100 py-2">
                           <div class="text-right"><span class="badge badge-info">
-                            {{reward.points_required}} points</span></div>    
+                            {{deal.points_required}} points</span></div>    
                           <div class="card-body">
                                                   
                             <div class="row no-gutters align-items-center">
                               
                                  
-                                  <div class="myfont">{{reward.item_name }} &nbsp;&nbsp;&nbsp;
-                                  &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                  <div class="myfont">{{deal.hotel}} 
+                                 </div>
                                 
-                                  <br>
+                                  <br><br>
                                 
-                                <img src="{{ reward.item_image.url }}" class="rounded" alt="Cinque Terre" width="165" height="170"> 
+                                <img src="{{ deal.hotel.image.url }}" class="rounded" alt="Cinque Terre" width="165" height="170"> 
 
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.{{ reward.item_price}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><br>Rs.<strike>{{ deal.original_price}}</strike></div>
                               </div>
                               
                               <br>
@@ -71,20 +71,24 @@
                <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-danger shadow h-100 py-2">
                           <div class="text-right"><span class="badge badge-danger">
-                            {{reward.points_required}} points</span></div>    
+                           {{deal.points_required}} points</span></div>    
                           <div class="card-body">
                                                   
                             <div class="row no-gutters align-items-center">
                               
                                  
-                                  <div class="myfont">{{reward.item_name }} &nbsp;&nbsp;&nbsp;
-                                  &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                  <div class="myfont">{{deal.hotel}} </div>
                                 
-                                  <br>
+                                  <br><br>
                                 
-                                <img src="{{ reward.item_image.url }}" class="rounded" alt="Cinque Terre" width="165" height="170"> 
+                                <img src="{{ deal.hotel.image.url }}" class="rounded" alt="Cinque Terre" width="185" height="170"> 
+                                <br>
 
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.{{ reward.item_price}}</div>
+                                <div>
+                                  <p>{{deal.description}}</p>
+                                </div>
+
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><br>Rs.<strike>{{ deal.original_price}}</strike></div>
                               </div>
                               
                               <br>
