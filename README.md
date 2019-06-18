@@ -4,8 +4,8 @@ Front End Application
 ## Features
 - User authentication i.e Registration, Login and Logout
 
-
-#### Initial Steps
+- ------------------------------------------------------------------
+#### Skip this steps for now
 - Go to the project directory
   ```bash
   cd mvr-fe
@@ -41,7 +41,7 @@ Front End Application
 - ```bash
   docker-compose run --rm app sh -c 'python manage.py test'
   ```
-
+- --------------------------------------------------------------------------
 
 #### Links
 - HomePage: <http://localhost:8000/>
