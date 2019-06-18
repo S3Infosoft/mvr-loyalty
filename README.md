@@ -74,7 +74,10 @@ Front End Application
 - and go to 
   <http://127.0.0.1:8000> 
 - ----------------------------------------------------------------------------------
-
+#### website will be available now at above url
+- visit all features mentioned in 'features section' by clicking the link/buttons available at navigation bar
+- for profile click on circlular image and click on profile
+- now you can see your profile and can change email id,profile pic etc
 - --------------------------------------------------------------------------
 
 #### Links
