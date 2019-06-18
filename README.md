@@ -51,11 +51,11 @@ Front End Application
 - Change Password: <http://localhost:8000/password_change/>
 - Forgot Password: <http://localhost:8000/password_reset/>
 
--All Available Coupen: http://127.0.0.1:8000/coupens/
--Special Deals for User : http://127.0.0.1:8000/deals/
--Points Earning History Of User : http://127.0.0.1:8000/earn_history/
--Points Spending History Of User : http://127.0.0.1:8000/spend_history/
--Contact Us : http://127.0.0.1:8000/contact_us/
--User Profile: http://127.0.0.1:8000/profile/
+- All Available Coupen: <http://127.0.0.1:8000/coupens/>
+- Special Deals for User : <http://127.0.0.1:8000/deals/>
+- Points Earning History Of User : <http://127.0.0.1:8000/earn_history/>
+- Points Spending History Of User : <http://127.0.0.1:8000/spend_history/>
+- Contact Us : <http://127.0.0.1:8000/contact_us/>
+- User Profile: <http://127.0.0.1:8000/profile/>
   - Enter the link given in terminal to browser
  
