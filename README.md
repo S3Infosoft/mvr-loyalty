@@ -4,8 +4,8 @@ Front End Application
 ## Features
 - User authentication i.e Registration, Login and Logout
 
-- ------------------------------------------------------------------
-#### Skip this steps for now
+- ----------------------------------------------------------------------------------------------
+## Skip this steps for now
 - Go to the project directory
   ```bash
   cd mvr-fe
