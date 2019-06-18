@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+
+  <link href="{% static 'css/earn_spend_history.css' %}" rel="stylesheet" type="text/css">
+  <!--for google font userd for reward_item_name-->
+  {% endblock extra_css %}
+
+{% block content %}
+
+<div class="btn-group btn-group-lg">
+  <a href="{% url 'earn_history' %}" class="btn btn-outline-info ">Earning History &nbsp;
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a href="{% url 'spend_history' %}" class="btn btn-outline-info active">Spend History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</div><br><br>
+
+
+
+{% for spend_point in spend_points %}
+
+    {% if spend_point.reward_item%}
+        
+        <article class="media content-section">
+          <img class="rounded" src="{{spend_point.reward_item.item_image.url}}" width="100" height="100">
+          &nbsp; &nbsp; &nbsp; 
+          <div class="media-body">
+            
+            <div class="article-metadata">
+              <font size="4"><spam class="text-info" >{{spend_point.reward_item.item_name}}</spam></font>
+              
+              <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
+            </div>
+
+            <div class="article-metadata">
+               <p>Category -> Coupen</p>
+            </div>
+
+            <div class="article-metadata">
+               <p>Coupen Worth -> Rs.{{spend_point.reward_item.item_price}}</p>
+            </div>
+             
+            <div class="article-metadata">
+               <p>Points Spend -> {{spend_point.reward_item.points_required}}</p>
+            </div>
+
+            
+          </div>
+        </article>
+
+
+
+    {% else %}
+
+        <article class="media content-section">
+            <img class="rounded" src="{{spend_point.special_deals.hotel.image.url}}" width="100" height="100">
+            &nbsp; &nbsp; &nbsp; 
+            <div class="media-body">
+              
+              <div class="article-metadata">
+                <font size="4"><spam class="text-info" >{{spend_point.special_deals.hotel.name}}</spam></font>
+                
+                <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
+              </div>
+
+              <div class="article-metadata">
+               <p>Category -> Special Offer</p>
+              </div>
+
+              <div class="article-metadata">
+                 <p>Description -> {{spend_point.special_deals.description}} </p>
+              </div>
+               
+              <div class="article-metadata">
+                 <p>Points Spend -> {{spend_point.special_deals.points_required}}</p>
+              </div>
+
+              
+            </div>
+        </article>
+
+
+
+     {% endif %}
+
+
+  {% endfor %}
+
+
+
+
+
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+
+
+{% endblock content %}

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from config import settings
 from users.models import CustomUser
+from django.utils import timezone
 
 # Create your models here.
 class RewardItem(models.Model):
@@ -19,7 +20,7 @@ class Guest(models.Model):
 
 	name=models.CharField(max_length=50)
 	phone= models.CharField(max_length=12)
-	email=models.EmailField(max_length=30,blank=True)
+	email=models.EmailField(max_length=30,blank=True)#guest email and custom user email must same
 	address=models.TextField()
 	points_available=models.IntegerField()
 
@@ -43,14 +44,16 @@ class Hotels(models.Model):
 
 class Reservations(models.Model):
 
-	guest=models.ForeignKey(Guest,on_delete=models.CASCADE)
-	hotel=models.ForeignKey(Hotels,on_delete=models.CASCADE)
+	guest=models.ForeignKey(Guest,on_delete=models.PROTECT)
+	hotel=models.ForeignKey(Hotels,on_delete=models.PROTECT)
 	v_t_hotel=models.DecimalField(max_digits=10, decimal_places=2)#(by this reservation only)
 	points_obtain=models.IntegerField()#from this reservation only(v_t_hotel * hotel.reward ratio)
+	date=models.DateTimeField(default=timezone.now)
 
 
 	def __str__(self):
 		return f'reservation of {self.guest }'
+
 
 class SpecialDeals(models.Model):
 
@@ -58,6 +61,24 @@ class SpecialDeals(models.Model):
 	description=models.TextField()
 	points_required=models.IntegerField()
 	original_price=models.FloatField(max_length=10)
+
+
+class SpendPoints(models.Model):
+    #while creating new SpendPoint oject into data base
+    #1of them is none
+    #s=SpendPoints(date=timezone.now(),reward_item=None,special_deals=None)
+    #s.save()
+
+	guest=models.ForeignKey(Guest,on_delete=models.PROTECT,null=True)
+	date=models.DateTimeField(default=timezone.now)
+	#guest will spend points in either one of below 2......1 field would be None
+	#therefore i have set null=True
+	reward_item=models.ForeignKey(RewardItem,on_delete=models.PROTECT,blank=True,null=True)
+	special_deals=models.ForeignKey(SpecialDeals,on_delete=models.PROTECT,blank=True,null=True)
+
+	def __str__(self):
+		return f'{self.guest }'
+
 
 
 class Profile(models.Model):
