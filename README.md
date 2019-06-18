@@ -48,11 +48,11 @@ Front End Application
 - --------------------------------------------------------------------------
 ## Start with this steps
 
-####clone this repository by 
+#### clone this repository by 
 - ```bash
   git clone [link for this repo]
   ```
-#### Go inside cloned repo and make virtual environment by 
+#### Go inside cloned repo and make virtual environment by (for windows)
 - ```bash
   virtualenv [name]
   ```
@@ -62,7 +62,18 @@ Front End Application
   [virtual env name]\scripts\activate
   ```
  
-
+ #### install required packages by
+- ```bash
+  pip install -r requirements.txt
+  ```
+  
+ #### Go to 'app' directory and Run local server by
+- ```bash
+  python manage.py runserver
+  ```
+- and go to 
+  <http://localhost:8000> 
+- ----------------------------------------------------------------------------------
 
 - --------------------------------------------------------------------------
 
