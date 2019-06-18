@@ -48,7 +48,8 @@ Front End Application
 - --------------------------------------------------------------------------
 ## Start with this steps
 
-- '''clone this repository by 
+####clone this repository by 
+    '''bash
     git clone [link for this repo]
     '''
 -
