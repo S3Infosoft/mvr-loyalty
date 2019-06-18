@@ -78,7 +78,7 @@ Front End Application
 - ----------------------------------------------------------------------------------
 #### website will be available now at above url
 - login with email id = "test1234@gmail.com" and password= "test@1234"
-- visit all features mentioned in 'features section' by clicking the link/buttons available at navigation bar
+- visit all features mentioned in 'features section' ABOVE by clicking the link/buttons available at navigation bar
 - for profile click on circlular image and click on profile
 - now you can see your profile and can change email id,profile pic etc
 - --------------------------------------------------------------------------
