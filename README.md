@@ -3,6 +3,10 @@ Front End Application
 
 ## Features
 - User authentication i.e Registration, Login and Logout
+- Dashboard i.e Availale Coupens, Available Special Deals
+- Points History i.e Earning History,Spend History
+- User Profile 
+- Contact Us
 
 - ----------------------------------------------------------------------------------------------
 ## Skip this steps for now
@@ -41,6 +45,16 @@ Front End Application
 - ```bash
   docker-compose run --rm app sh -c 'python manage.py test'
   ```
+- --------------------------------------------------------------------------
+## Start with this steps
+
+- '''clone this repository by 
+    git clone [link for this repo]
+    '''
+-
+ 
+
+
 - --------------------------------------------------------------------------
 
 #### Links
