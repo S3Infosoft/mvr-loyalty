@@ -50,7 +50,7 @@ Front End Application
 - Logout: <http://localhost:8000/logout/>
 - Change Password: <http://localhost:8000/password_change/>
 - Forgot Password: <http://localhost:8000/password_reset/>
-
+- -----------------------------------------------------------
 - All Available Coupen: <http://127.0.0.1:8000/coupens/>
 - Special Deals for User : <http://127.0.0.1:8000/deals/>
 - Points Earning History Of User : <http://127.0.0.1:8000/earn_history/>
