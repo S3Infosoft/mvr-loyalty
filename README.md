@@ -49,10 +49,18 @@ Front End Application
 ## Start with this steps
 
 ####clone this repository by 
-    '''bash
-    git clone [link for this repo]
-    '''
--
+- ```bash
+  git clone [link for this repo]
+  ```
+#### Go inside cloned repo and make virtual environment by 
+- ```bash
+  virtualenv [name]
+  ```
+  
+ #### activate virtual env by(for windows)
+- ```bash
+  [virtual env name]\scripts\activate
+  ```
  
 
 
