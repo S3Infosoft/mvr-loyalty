@@ -98,7 +98,7 @@ class earn_Points_History_Listview(LoginRequiredMixin,ListView):
     paginate_by=5
 
     def get_queryset(self):
-
+      #guest email should change if user email change
       return Reservations.objects.filter(guest__email=self.request.user.email).order_by('-date')
 
 
@@ -113,7 +113,7 @@ class spend_Points_History_Listview(LoginRequiredMixin,ListView):
     paginate_by=5
 
     def get_queryset(self):
-
+      #guest email should change if user email change
       return SpendPoints.objects.filter(guest__email=self.request.user.email).order_by('-date')
         
                                                                           

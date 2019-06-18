@@ -17,7 +17,7 @@ class RewardItem(models.Model):
 		return f'{self.item_name }'
 
 class Guest(models.Model):
-
+    # whenver user email changes guest email also should change
 	name=models.CharField(max_length=50)
 	phone= models.CharField(max_length=12)
 	email=models.EmailField(max_length=30,blank=True)#guest email and custom user email must same
