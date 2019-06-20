@@ -9,71 +9,43 @@ Front End Application
 - Contact Us
 
 - ----------------------------------------------------------------------------------------------
-## Skip this steps for now
-- Go to the project directory
-  ```bash
-  cd mvr-fe
-  ```
-- Build the Docker image
-  ```bash
-  docker build .
-  ```
-- Build the Docker image using docker-compose
-  ```bash
-  docker-compose build
-  ```
-- Migrate the models to database
-  ```bash
-  docker-compose run --rm app sh -c 'python manage.py makemigrations'
-  docker-compose run --rm app sh -c 'python manage.py migrate'
-  ```
-
-
-#### To run the server
--   ```bash
-    docker-compose up
-    ```
-#### To create a superuser
-- ```bash
-  docker-compose run --rm app sh -c 'python manage.py createsuperuser'
-  ```
-- Login to admin page
-  <http://localhost:8000/admin/>
-
-
-#### To run the tests
-- ```bash
-  docker-compose run --rm app sh -c 'python manage.py test'
-  ```
-- --------------------------------------------------------------------------
 ## Start with this steps
 
 #### clone this repository by 
 - ```bash
   git clone [link for this repo]
   ```
-#### Go inside cloned repo and make virtual environment by (for windows)
-- ```bash
-  virtualenv [name]
-  ```
   
- #### activate virtual env by(for windows)
-- ```bash
-  [virtual env name]\scripts\activate
+- Go to the project directory
+  ```bash
+  cd s3-loyalty-webapp
   ```
+- Build the Docker image
+  ```bash
+  docker build -t [image name]:[tag name] .      or just    docker build .
+  ```
+- Build the Docker image using docker-compose
+  ```bash
+  docker-compose build
+  ```
+#### To run the server
+-   ```bash
+    docker-compose up
+    ```
+ #### check your all images
+-   ```bash
+    docker images
+    ```
+ #### check your all containers and running containers by
+-   ```bash
+    docker ps -a     and   docker ps
+    ```
  
- #### install required packages by
-- ```bash
-  pip install -r requirements.txt
-  ```
-  
- #### Go to 'app' directory and Run local server by
-- ```bash
-  python manage.py runserver
-  ```
-- and go to 
-  <http://127.0.0.1:8000> 
-  
+- --------------------------------------------------------------------------
+
+At this point, your Django app should be running at port 8000 on your Docker host. On Docker Desktop for Mac and Docker Desktop for Windows, go to http://localhost:8000 on a web browser to see the website. If you are using Docker Machine, then docker-machine ip MACHINE_VM returns the Docker host IP address, to which you can append the port (<Docker-Host-IP>:8000).
+
+
  
 - ----------------------------------------------------------------------------------
 #### website will be available now at above url
