@@ -22,6 +22,7 @@ password_urls = [
 ]
 
 urlpatterns = [
+    path("", include("razorpay_gateway.razorpay_urls")),
     path("", views.my_Redirect, name="my_redirect"),
     path("login/", views.LoginView.as_view(), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),

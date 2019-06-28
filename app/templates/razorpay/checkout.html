@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title> RazorPay Integration in PHP - phpexpertise.com </title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+      .razorpay-payment-button {
+        color: #ffffff !important;
+        background-color: #7266ba;
+        border-color: #7266ba;
+        font-size: 14px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    
+  
+<h4>Showing Payment Gateway...Please do not press any button...</h4>
+<h2><p id="result"></p></h2>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_FdQhMp5ufixjU5", // Enter the Key ID generated from the Dashboard
+    "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 29935 refers to 29935 paise or INR 299.35.
+    "currency": "INR",
+    "name": "S3 INFOSOFT",
+    "description": "whatever you want",
+    "image": "https://example.com/your_logo",
+    "order_id":'{{order_response_id}}',//Order ID is generated as Orders API has been implemented. Refer the Checkout form table given below
+    "handler": function (response){
+
+        
+        document.getElementById("result").innerHTML = 'Payment in process ..please wait..'
+        
+
+    
+
+
+                                function post(path, params, method='post') {
+
+                                  // The rest of this code assumes you are not using a library.
+                                  // It can be made less wordy if you use one.
+                                  const form = document.createElement('form');
+                                  form.method = method;
+                                  form.action = path;
+                                  
+                                  for (const key in params) {
+                                    if (params.hasOwnProperty(key)) {
+                                      const hiddenField = document.createElement('input');
+                                      hiddenField.type = 'hidden';
+                                      hiddenField.name = key;
+                                      hiddenField.value = params[key];
+
+                                      form.appendChild(hiddenField);
+                                    }
+                                  }
+
+                                  document.body.appendChild(form);
+                                  form.submit();
+                                }
+                       post('/checkout_done/', {
+                        'razorpay_payment_id': response.razorpay_payment_id,
+                        'razorpay_order_id': response.razorpay_order_id,
+                        'razorpay_signature': response.razorpay_signature,
+                        'user_unique_id':'{{user.unique_id}}',
+                        'user_email':'{{email}}'
+
+                             } );
+
+
+
+
+                    
+                             
+    },
+
+    "prefill": {
+        "name": '{{name}}',
+        "email": '{{email}}',
+        "contact":"9898989898"
+
+    },
+    
+    "notes":{
+        "loyalty_email": '{{user.email}}',
+        "loyalty_user_unique_id": '{{user.unique_id}}'
+
+    },
+
+    "theme": {
+        "color": "#F37254"
+    }
+
+
+
+};
+var rzp1 = new Razorpay(options);
+window.onload =  function(e){
+    rzp1.open();
+    e.preventDefault();
+    
+}
+</script>
+
+<input type="hidden" custom="hiddenYASH" name="hidden">
+
+  </body>
+</html><!--data-amount="100" // Amount is in currency subunits. Default currency is INR. Hence, 29935 refers to 29935 paise or INR 299.35.
+    data-currency="INR"--noreuired to pass this bcoz already pass while order creating-->
+
+  <!--document.getElementById('rzp-button1').onclick = function(e) ........if we want button and then after clicking button window of razor pay will open-->

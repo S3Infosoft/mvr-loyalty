@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from config import settings
 from users.models import CustomUser
 from django.utils import timezone
+import uuid
 
 # Create your models here.
 class RewardItem(models.Model):
@@ -12,6 +13,7 @@ class RewardItem(models.Model):
 	item_description=models.TextField()
 	points_required=models.IntegerField()
 	item_image=models.ImageField(default='default_image.png',upload_to='reward_item_pics')
+	item_id=models.CharField(max_length=1000, blank=True,null=True, unique=True, default=uuid.uuid4)
 
 	def __str__(self):
 		return f'{self.item_name }'

@@ -1,4 +1,11 @@
+import dotenv# we have dowloaded python-dotenv package from pip
 import os
+import sys
+
+dotenv.load_dotenv()
+
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -8,10 +15,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'atnvxcapm%14e+m-o6fk!#o_i4q8yaebpfiko+&2-1=ct!bk6-'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG=bool(os.environ.get('DEBUG', ''))#if DEBUG is not present in env then False 
+                                       #if it is set to True or False in .env then True
+
+
+razorpay_key_id = os.getenv('razorpay_key_id')
+razorpay_secret_id = os.getenv('razorpay_secret_id')
 
 ALLOWED_HOSTS = ['192.168.99.100','0.0.0.0','127.0.0.1','localhost']
 
@@ -20,6 +31,7 @@ ALLOWED_HOSTS = ['192.168.99.100','0.0.0.0','127.0.0.1','localhost']
 
 INSTALLED_APPS = [
      'loyalty.apps.LoyaltyConfig',
+     'razorpay_gateway.apps.RazorpayGatewayConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,3 +139,4 @@ LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "login"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+

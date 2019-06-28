@@ -10,6 +10,8 @@ from loyalty.models import Guest,RewardItem,SpecialDeals,Reservations,SpendPoint
 from users.models import CustomUser
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.csrf import csrf_exempt
+
 
 def my_Redirect(request):
   return redirect("/coupens/")
@@ -17,15 +19,13 @@ def my_Redirect(request):
 
 @decorators.login_required
 def index(request):
-    #print(Guest.objects.filter(email=request.user).first())
-    
-  
+   
     context={
            'users':CustomUser.objects.all(),
            'guests':Guest.objects.all(),
            'rewards':RewardItem.objects.all(),
-           'current_user': CustomUser.objects.filter(email=request.user).first(),
-           'current_user_points': CustomUser.objects.filter(email=request.user).first().points_available,
+           'current_user': CustomUser.objects.filter(unique_id=request.user.unique_id).first(),
+           'current_user_points': CustomUser.objects.filter(unique_id=request.user.unique_id).first().points_available,
            #__ is used to access foreignkey fields in queryset
            #custom user and guest email must same
            'reservation': Reservations.objects.filter(guest__email=request.user.email),
@@ -62,8 +62,8 @@ def deals(request):
            'guests':Guest.objects.all(),
            'rewards':RewardItem.objects.all(),
            'deals': SpecialDeals.objects.all(),
-           'current_user':  CustomUser.objects.filter(email=request.user).first(),
-           'current_user_points': CustomUser.objects.filter(email=request.user).first().points_available,
+           'current_user':  CustomUser.objects.filter(unique_id=request.user.unique_id).first(),
+           'current_user_points': CustomUser.objects.filter(unique_id=request.user.unique_id).first().points_available,
            
                  }
     return render(request, "deals.html",context)
@@ -79,8 +79,8 @@ def contact_us(request):
            'guests':Guest.objects.all(),
            'rewards':RewardItem.objects.all(),
            'deals': SpecialDeals.objects.all(),
-           'current_user':  CustomUser.objects.filter(email=request.user).first(),
-           'current_user_points': CustomUser.objects.filter(email=request.user).first().points_available,
+           'current_user':  CustomUser.objects.filter(unique_id=request.user.unique_id).first(),
+           'current_user_points': CustomUser.objects.filter(unique_id=request.user.unique_id).first().points_available,
           
                  }
     return render(request, "contact_us.html",context)

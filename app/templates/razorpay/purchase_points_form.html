@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra_css %}
+
+  <link href="{% static 'css/earn_spend_history.css' %}" rel="stylesheet" type="text/css">
+  <!--for google font userd for reward_item_name-->
+  {% endblock extra_css %}
+
+{% block extra_styles %}
+<style>
+    .razorpay-payment-button {
+        color: #ffffff !important;
+        background-color: #7266ba;
+        border-color: #7266ba;
+        font-size: 14px;
+        padding: 10px;
+        }
+
+    
+      
+ </style>
+  {% endblock extra_styles %}
+ 
+{% block content %}
+
+   <div class="col-sm-6"><!--remove this div if you want textbox long upto right extreme-->
+    <div class="content-section">
+      
+      <form action="/checkout/" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Note --> 1 INR = 1 Point</legend>
+              {{ form|crispy }}
+                
+            <input type="hidden" id="custId" name="security_value" value={{security_value}}>
+          </fieldset>
+          <div class="form-group">
+              <button class="razorpay-payment-button" type="submit">Pay with Razorpay</button>
+          </div>
+      </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
