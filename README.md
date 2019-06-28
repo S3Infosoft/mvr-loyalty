@@ -59,6 +59,10 @@ At this point, your Django app should be running at port 8000 on your Docker hos
     docker-compose up --build
     ```
  -  website will be live ,go to purchase points button in navbar any complete your payment
+ - pay via card add card number 411111...
+ - fill any random future expiry date
+ - add any random cvv
+ - pay ...points will be added after successfull transaction
 
  
 - ----------------------------------------------------------------------------------
