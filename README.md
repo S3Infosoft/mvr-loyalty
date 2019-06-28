@@ -53,12 +53,12 @@ At this point, your Django app should be running at port 8000 on your Docker hos
  - .env file containing razorpay credential are not include in this repo
  - whats app me for .env file 
  - save .env file into config file where the settings.py resides
- - the again build your image by
  
- -   ```bash
+ ##### again build your image by
+ -  ```bash
     docker-compose up --build
     ```
- - website will be live ,go to purchase points button in navbar any complete your payment
+ -  website will be live ,go to purchase points button in navbar any complete your payment
 
  
 - ----------------------------------------------------------------------------------
