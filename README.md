@@ -38,6 +38,7 @@ Front End Application
     docker images
     ```
  #### check your all containers and running containers by
+ 
 -   ```bash
     docker ps -a     and   docker ps
     ```
@@ -51,8 +52,9 @@ At this point, your Django app should be running at port 8000 on your Docker hos
  
  - .env file containing razorpay credential are not include in this repo
  - whats app me for .env file 
- - paste .env file into config file where the settings.py resides
+ - save .env file into config file where the settings.py resides
  - the again build your image by
+ 
  -   ```bash
     docker-compose up --build
     ```
