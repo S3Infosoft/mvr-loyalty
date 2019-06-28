@@ -51,7 +51,7 @@ At this point, your Django app should be running at port 8000 on your Docker hos
  ## NEW FEATURE -----> PURCHASE POINTS
  
  - .env file containing razorpay credential are not include in this repo
- - whats app me for .env file 
+ - .env file is sent to you via email
  - save .env file into config file where the settings.py resides
  
  ##### again build your image by
