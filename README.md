@@ -7,6 +7,7 @@ Front End Application
 - Points History i.e Earning History,Spend History
 - User Profile 
 - Contact Us
+-Purchase Points(NEW)
 
 - ----------------------------------------------------------------------------------------------
 ## Start with this steps
@@ -44,7 +45,18 @@ Front End Application
 - --------------------------------------------------------------------------
 
 At this point, your Django app should be running at port 8000 on your Docker host. On Docker Desktop for Mac and Docker Desktop for Windows, go to http://localhost:8000 on a web browser to see the website. If you are using Docker Machine, then docker-machine ip MACHINE_VM returns the Docker host IP address, to which you can append the port (<Docker-Host-IP>:8000).
-
+- ---------------------------------------------------------------------------------------
+  
+ ## NEW FEATURE -----> PURCHASE POINTS
+ 
+ - .env file containing razorpay credential are not include in this repo
+ - whats app me for .env file 
+ - paste .env file into config file where the settings.py resides
+ - the again build your image by
+ -   ```bash
+    docker-compose up --build
+    ```
+ - website will be live ,go to purchase points button in navbar any complete your payment
 
  
 - ----------------------------------------------------------------------------------
