@@ -1,5 +1,5 @@
-# mvr-fe
-Front End Application
+# s3-loyalty-webapp
+Loyalty Web App
 
 ## Features
 - User authentication i.e Registration, Login and Logout
@@ -89,3 +89,8 @@ At this point, your Django app should be running at port 8000 on your Docker hos
 - User Profile: <http://127.0.0.1:8000/profile/>
   - Enter the link given in terminal to browser
  
+
+Redeem -> Checkout
+RedeemQueue: User (FK), RI (12M), SD (12M), CD, Status(Pending/Rejected/Completed), Comments(TF)
+
+
