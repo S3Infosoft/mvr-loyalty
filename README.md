@@ -80,7 +80,7 @@ At this point, your Django app should be running at port 9000 on your Docker hos
  - from dashboard redeem any available coupen or special deal...after clicking redeem button coupen or deal will be added to cart
  - you can remove coupen or deal from cart by clicking on cross symbol
  - after clicking redeem button in cart coupen or specail deal would be redeemd successfully..and user can see redeem information from      Spend History button
- - check your personal email,email would be sent to you once coupen successfully redeemed.
+ - check your personal email,email would be sent to you once coupen successfully redeemed.(your email is hard coded in .env for now for testing)
 
 - ----------------------------------------------------------------------------------
 
