@@ -12,77 +12,107 @@
   <a href="{% url 'earn_history' %}" class="btn btn-outline-info ">Earning History &nbsp;
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-  <a href="{% url 'spend_history' %}" class="btn btn-outline-info active">Spend History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a href="{% url 'spend_history' %}" class="btn btn-outline-info active">Spend History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+  <a href="{% url 'purchase_history' %}" class="btn btn-outline-info">Purchased History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 </div><br><br>
 
 
 
 {% for spend_point in spend_points %}
 
-    {% if spend_point.reward_item%}
-        
-        <article class="media content-section">
-          <img class="rounded" src="{{spend_point.reward_item.item_image.url}}" width="100" height="100">
-          &nbsp; &nbsp; &nbsp; 
-          <div class="media-body">
-            
-            <div class="article-metadata">
-              <font size="4"><spam class="text-info" >{{spend_point.reward_item.item_name}}</spam></font>
-              
-              <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
-            </div>
+      {% if spend_point < 1 %}<!--when reservation ==0 ...there was nootherway of printing this-->
+                <h2>No any Spending History </h2>
+      {% else%}
 
-            <div class="article-metadata">
-               <p>Category -> Coupen</p>
-            </div>
-
-            <div class="article-metadata">
-               <p>Coupen Worth -> Rs.{{spend_point.reward_item.item_price}}</p>
-            </div>
-             
-            <div class="article-metadata">
-               <p>Points Spend -> {{spend_point.reward_item.points_required}}</p>
-            </div>
-
-            
-          </div>
-        </article>
-
-
-
-    {% else %}
-
-        <article class="media content-section">
-            <img class="rounded" src="{{spend_point.special_deals.hotel.image.url}}" width="100" height="100">
-            &nbsp; &nbsp; &nbsp; 
-            <div class="media-body">
-              
-              <div class="article-metadata">
-                <font size="4"><spam class="text-info" >{{spend_point.special_deals.hotel.name}}</spam></font>
+            {% if spend_point.reward_item%}
                 
-                <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
-              </div>
+                <article class="media content-section">
+                  <img class="rounded" src="{{spend_point.reward_item.item_image.url}}" width="100" height="100">
+                  &nbsp; &nbsp; &nbsp; 
+                  <div class="media-body">
+                    
+                    <div class="article-metadata">
+                      <font size="4"><spam class="text-info" >{{spend_point.reward_item.item_name}}</spam></font>
+                      
+                      <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
+                    </div>
 
-              <div class="article-metadata">
-               <p>Category -> Special Offer</p>
-              </div>
+                    <div class="article-metadata">
+                       <p>Category -> Coupen</p>
+                    </div>
 
-              <div class="article-metadata">
-                 <p>Description -> {{spend_point.special_deals.description}} </p>
-              </div>
-               
-              <div class="article-metadata">
-                 <p>Points Spend -> {{spend_point.special_deals.points_required}}</p>
-              </div>
-
-              
-            </div>
-        </article>
+                    <div class="article-metadata">
+                       <p>Coupen Worth -> Rs.{{spend_point.reward_item.item_price}}</p>
+                    </div>
+                     
+                    <div class="article-metadata">
+                       <p>Points Spend -> {{spend_point.reward_item.points_required}}</p>
+                    </div>
 
 
+                      <div class="article-metadata">
+                       status ->
 
-     {% endif %}
+                        {% if spend_point.status == "rejected" %}
+                            <span class="badge badge-danger">Failed</span>
+                        {% elif spend_point.status == "completed" %}
+                            <span class="badge badge-success">Success</span>
+                        
+                        {%endif%}
+                    </div>                   
+                   
 
+                  </div>
+                </article>
+
+
+
+            {% else %}
+
+                <article class="media content-section">
+                    <img class="rounded" src="{{spend_point.special_deals.hotel.image.url}}" width="100" height="100">
+                    &nbsp; &nbsp; &nbsp; 
+                    <div class="media-body">
+                      
+                      <div class="article-metadata">
+                        <font size="4"><spam class="text-info" >{{spend_point.special_deals.hotel.name}}</spam></font>
+                        
+                        <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
+                      </div>
+
+                      <div class="article-metadata">
+                       <p>Category -> Special Offer</p>
+                      </div>
+
+                      <div class="article-metadata">
+                         <p>Description -> {{spend_point.special_deals.description}} </p>
+                      </div>
+                       
+                      <div class="article-metadata">
+                         <p>Points Spend -> {{spend_point.special_deals.points_required}}</p>
+                      </div>
+
+                      <div class="article-metadata">
+                       status ->
+
+                        {% if spend_point.status == "rejected" %}
+                            <span class="badge badge-danger">Failed</span>
+                        {% elif spend_point.status == "completed" %}
+                            <span class="badge badge-success">Success</span>
+                        
+                        {%endif%}
+                    </div>
+
+                      
+                    </div>
+                </article>
+
+
+
+             {% endif %}
+     
+      {% endif %}
 
   {% endfor %}
 

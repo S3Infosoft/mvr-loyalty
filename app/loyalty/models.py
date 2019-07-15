@@ -6,6 +6,8 @@ from django.utils import timezone
 import uuid
 
 # Create your models here.
+
+#when we assign field as blank=True ,then that field becomes optional
 class RewardItem(models.Model):
 
 	item_name=models.CharField(max_length=50)
@@ -21,14 +23,15 @@ class RewardItem(models.Model):
 class Guest(models.Model):
     # whenver user email changes guest email also should change
 	name=models.CharField(max_length=50)
-	phone= models.CharField(max_length=12)
+	phone= models.CharField(max_length=12,blank=True,null=True)
 	email=models.EmailField(max_length=30,blank=True)#guest email and custom user email must same
-	address=models.TextField()
-	points_available=models.IntegerField()
+	address=models.TextField(blank=True,null=True)
+	#didnt make points_available field...we would get that from CustomUser database
+	unique_id=models.CharField(max_length=1000, blank=True,null=True)
 
 
 	def __str__(self):
-		return f'{self.name }'
+		return f'{self.email }'
 
 class Hotels(models.Model):
 
@@ -59,10 +62,16 @@ class Reservations(models.Model):
 
 class SpecialDeals(models.Model):
 
-	hotel=models.ForeignKey(Hotels,on_delete=models.CASCADE)
+	deal_name=models.CharField(max_length=100, blank=True, default="no name")
+	hotel=models.ForeignKey(Hotels,on_delete=models.CASCADE,null=True)
 	description=models.TextField()
 	points_required=models.IntegerField()
 	original_price=models.FloatField(max_length=10)
+	deal_image=models.ImageField(default='deal.jpg',upload_to='deals_pics')
+	deal_id=models.CharField(max_length=1000, blank=True, default=uuid.uuid4)
+
+	def __str__(self):
+		return f'{self.deal_name }'
 
 
 class SpendPoints(models.Model):
@@ -73,6 +82,8 @@ class SpendPoints(models.Model):
 
 	guest=models.ForeignKey(Guest,on_delete=models.PROTECT,null=True)
 	date=models.DateTimeField(default=timezone.now)
+	#status---> rejectedor completed 
+	status=models.CharField(max_length=50, blank=True)
 	#guest will spend points in either one of below 2......1 field would be None
 	#therefore i have set null=True
 	reward_item=models.ForeignKey(RewardItem,on_delete=models.PROTECT,blank=True,null=True)
@@ -108,7 +119,28 @@ class Profile(models.Model):
 #User.objects.all()....now all USer fields aree accessible by CustomUSer
 
 
+class ContactUs(models.Model):
+
+	name=models.CharField(max_length=50)
+	email=models.EmailField(max_length=30)
+	subject=models.CharField(max_length=300)
+	message=models.CharField(max_length=1000)
+	user=models.ForeignKey(CustomUser,on_delete=models.PROTECT,null=True)
+
+	def __str__(self):
+		return f'from {self.user} '
 
 
 
 
+class Cart(models.Model):
+
+	user=models.ForeignKey(CustomUser,on_delete=models.PROTECT)
+	reward_items=models.ForeignKey(RewardItem,on_delete=models.PROTECT,null=True,blank=True)
+	special_deals=models.ForeignKey(SpecialDeals,on_delete=models.PROTECT,null=True,blank=True)
+	status=models.CharField(max_length=50)
+	date=models.DateTimeField(default=timezone.now)
+	cart_id=models.CharField(max_length=1000, blank=True, default=uuid.uuid4)
+
+	def __str__(self):
+		return f'from {self.user} '

@@ -8,6 +8,22 @@
 	font-size: 18px;
 	text-transform: lowercase;
 }
+.myfont2{
+
+
+	font-family: 'Domine', serif;
+	color: #63776B  ;
+	font-size: 10px;
+	text-transform: lowercase;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
 
 .ok {
   border: 2px solid red;

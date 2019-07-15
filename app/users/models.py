@@ -48,9 +48,13 @@ class CustomUser(auth_models.AbstractUser):#whatever field you want extra in use
     """
     #print("Inside CustomUser"*5)
 
-    username = models.CharField(max_length=50,default="ok")
+    
     points_available=models.FloatField(max_length=10,default=0.0)
     unique_id=models.CharField(max_length=40,null=True,blank=True,unique=True,default=uuid.uuid4)
+    
+
+
+
    #this 3 fields username and points_available are added to our user model
     ##whatever ectra fields are added in CustomUser model ,to show it in admin panel,we have to
     #add that in admin.py

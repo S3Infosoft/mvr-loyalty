@@ -20,7 +20,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = get_user_model()
-        fields = "email", "first_name", "last_name",
+        fields = "email", "first_name", "last_name","username",
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

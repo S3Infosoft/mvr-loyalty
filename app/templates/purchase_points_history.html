@@ -9,44 +9,44 @@
 {% block content %}
 
 <div class="btn-group btn-group-lg">
-  <a href="{% url 'earn_history' %}" class="btn btn-outline-info active">Earning History &nbsp;
+  <a href="{% url 'earn_history' %}" class="btn btn-outline-info">Earning History &nbsp;
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
   <a href="{% url 'spend_history' %}" class="btn btn-outline-info">Spend History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
-  <a href="{% url 'purchase_history' %}" class="btn btn-outline-info">Purchased History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a href="{% url 'purchase_history' %}" class="btn btn-outline-info active">Purchased History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 </div><br><br>
 
 
 
 
 
-{% for reservation in reservations %}
+{% for purchase in purchase_points %}
 
 
 
-     {% if reservation < 1 %}<!--when reservation ==0 ...there was nootherway of printing this-->
-                <h2>No any Earning History </h2>
+     {% if purchase < 1 %}<!--when reservation ==0 ...there was nootherway of printing this-->
+                <h2>No any Purchase History </h2>
       {% else %}
 
               <article class="media content-section">
-                <img class="rounded" src="{{reservation.hotel.image.url}}" width="100" height="100">
+                <img class="rounded" src="/media/razorpay.png" width="100" height="100">
                 &nbsp; &nbsp; &nbsp; 
                 <div class="media-body">
                   
                   <div class="article-metadata">
-                    <font size="4"><spam class="text-info" >{{reservation.hotel}}</spam></font>
+                    <font size="4"><spam class="text-info" >Razorpay Order</spam></font>
                     
-                    <small class="text-muted">&nbsp;{{ reservation.date|date:"F d, Y" }}</small>
+                    <small class="text-muted">&nbsp;{{ purchase.date|date:"F d, Y" }}</small>
                   </div>
 
                   
                   <div class="article-metadata">
-                     <p>Value To Hotel -> {{reservation.v_t_hotel}}</p>
+                     <p>Amount Debited -> {{purchase.amount_debited}}</p>
                   </div>
                    
                   <div class="article-metadata">
-                     <p>Points Earn -> {{reservation.points_obtain}}</p>
+                     <p>Points Purchased -> {{purchase.points_added}}</p>
                   </div>
 
                   

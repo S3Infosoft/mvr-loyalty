@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import RewardItem,Guest,Hotels,Reservations,SpecialDeals,Profile,SpendPoints
+from .models import RewardItem,Guest,Hotels,Reservations,SpecialDeals,Profile,SpendPoints,ContactUs,Cart
 # Register your models here.
 admin.site.register(RewardItem)
 admin.site.register(Guest)
@@ -10,3 +10,6 @@ admin.site.register(SpendPoints)
 admin.site.register(Reservations)
 admin.site.register(SpecialDeals)
 admin.site.register(Profile)
+admin.site.register(ContactUs)
+admin.site.register(Cart)
+

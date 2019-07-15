@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+  {% block extra_css %}
+<link href="{% static 'css/mycss.css' %}" rel="stylesheet" type="text/css">
+
+
+  {% endblock extra_css %}
+
+
+
+{% block content %}
+
+ <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Available Points :- {{current_user_points}}</h1>
+    
+  </div>
+
+  {% if total_cart_items == 0 %}
+           <h2>Nothing in Cart </h2>
+   {% endif %}
+
+<section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>Image</th>
+						        <th>Item</th>
+						        <th>Points_required</th>
+						        <th>Redeem status</th>
+						        <th>Date</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+
+   
+
+
+
+{% for cart in carts %}
+   
+
+                {% if cart.reward_items %}
+
+
+						      <tr class="text-center">
+
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+
+						        <td>
+						           <img src="{{cart.reward_items.item_image.url}}" class="rounded" alt="Cinque Terre" width="100"  height="100">
+						         </td>
+						        
+						        <td >
+						        	<h5>
+						        		{{cart.reward_items.item_name}}
+						        	</h5>
+						        </td>
+
+						        <td>
+						        	<h5>
+						        		{{cart.reward_items.points_required}}
+						        	</h5>
+						        </td>
+
+						        <td>
+						        	<h5>
+						        		{{cart.status}}
+
+							        	{% if cart.status == "pending" %}
+						        		    <div class="spinner-grow text-warning"></div>
+						        		
+						        		{%endif%}					        		
+						        	</h5>
+						        </td>
+
+						        <td>
+						        	<h5>
+						        		{{cart.date|date:"F d, Y"}}
+						        	</h5>
+						        </td>
+
+
+
+                                 
+                                  <td>
+
+								     <form action="/redeem/" method="POST" enctype="multipart/form-data">
+								          {% csrf_token %}
+								          <fieldset class="form-group">     
+								            <input type="hidden" id="cartId" name="cart_id" value={{cart.cart_id}}>
+								          </fieldset>
+								          <div class="form-group">
+								          	  <button href="{% url 'redeem' %}" class="btn btn-outline-success" type="submit">Redeem</button>
+								              
+								          </div>
+								     
+						         		   
+						             </form>
+						         </td>
+
+						         
+                                
+                                
+                                <td>
+
+						        <a href="{% url 'cart-delete' cart.id %}"><img src="\media\cancel.png" class="img-responsive"width="40" height="40"></a>
+
+						        </td>
+
+
+                {% else %}
+
+                            <tr class="text-center">
+
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+
+						        <td>
+						           <img src="{{cart.special_deals.deal_image.url}}" class="rounded" alt="Cinque Terre" width="100"  height="100">
+						         </td>
+						        
+						        <td >
+						        	<h5>
+						        		Special Deal
+						        	</h5>
+						        </td>
+
+						        <td>
+						        	<h5>
+						        		{{cart.special_deals.points_required}}
+						        	</h5>
+						        </td>
+
+						        <td>
+						        	<h5>
+						        		{{cart.status}}
+
+						        		{% if cart.status == "pending" %}
+						        		    <div class="spinner-grow text-warning"></div>
+						        		
+						        		{%endif%}
+						        	</h5>
+						        </td>
+
+						        <td>
+						        	<h5>
+						        		{{cart.date|date:"F d, Y"}}
+						        	</h5>
+						        </td>
+
+
+
+                                 <td>
+
+								     <form action="/redeem/" method="POST" enctype="multipart/form-data">
+								          {% csrf_token %}
+								          <fieldset class="form-group">     
+								            <input type="hidden" id="cartId" name="cart_id" value={{cart.cart_id}}>
+								          </fieldset>
+								          <div class="form-group">
+								          	  <button href="{% url 'redeem' %}" class="btn btn-outline-success" type="submit">Redeem</button>
+								              
+								          </div>
+								     
+						         		   
+						             </form>
+						         </td>
+
+
+                                
+                                <td>
+
+						        <a href="{% url 'cart-delete' cart.id %}"><img src="\media\cancel.png" class="img-responsive"width="40" height="40"></a>
+
+						        </td>
+
+
+
+                {% endif %}
+
+
+
+						        
+	{% endfor %}			        
+						        
+						        
+						      
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    	
+			</div>
+		</section>
+
+
+
+
+
+
+
+{% endblock content %}

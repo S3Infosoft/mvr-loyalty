@@ -3,7 +3,10 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from loyalty import views as loyalty_views
-from .views import earn_Points_History_Listview,spend_Points_History_Listview
+from .views import ( earn_Points_History_Listview,
+                    spend_Points_History_Listview,
+                    purchase_Points_History_Listview, )
+from .views import CartDeleteView
 
 password_urls = [
     path("change/done/", auth_views.PasswordChangeDoneView.as_view(),
@@ -32,7 +35,12 @@ urlpatterns = [
     path("deals/", views.deals, name="deals"),
     path("profile/",loyalty_views.profile,name="profile"),
     path("contact_us/",views.contact_us,name="contact_us"),
+    path("cart/",views.cart,name="cart"),
+     path("redeem/",views.Redeem,name="redeem"),
+    path("cart/<int:pk>/delete/",views.CartDeleteView.as_view(),name="cart-delete"),
     path("earn_history/",earn_Points_History_Listview.as_view(),name="earn_history"),
     path("spend_history/",spend_Points_History_Listview.as_view(),name="spend_history"),
+    path("purchase_history/",purchase_Points_History_Listview.as_view(),name="purchase_history"),
+
 
 ]
