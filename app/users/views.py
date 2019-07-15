@@ -17,7 +17,7 @@ from django.views.generic import DeleteView
 from django.core.mail import send_mail
 from config import settings
 import uuid
-                                 
+import os                              
 
 
 
@@ -124,7 +124,7 @@ def Redeem(request):
       subject='Coupen Successfully Redeemed'
       email_message="Your coupen is ........."
       from_email=settings.EMAIL_HOST_USER 
-      recipients_list=['yashwadia7025@gmail.com']#[request.user.email]
+      recipients_list=[os.getenv('recipient')]#[request.user.email]
       send_mail(subject,email_message,from_email,recipients_list)
             
       message="Coupens is Redeemed successfully and sent to your email_id as well as on your phone"
@@ -136,7 +136,7 @@ def Redeem(request):
       subject='Special Deal is Successfully Redeemed'
       email_message="Your deal is..........."
       from_email=settings.EMAIL_HOST_USER 
-      recipients_list=['yashwadia7025@gmail.com']#[request.user.email]
+      recipients_list=[os.getenv('recipient')]#[request.user.email]
       send_mail(subject, email_message, from_email,recipients_list)
 
       message="Specail deal is Redeemed successfully and sent to your email_id as well as on your phone"
