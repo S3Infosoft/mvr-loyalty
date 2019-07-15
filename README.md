@@ -8,16 +8,20 @@ Loyalty Web App
 - User Profile 
 - Contact Us
 -Purchase Points(NEW)
+-Cart(NEW)
+-Redeem(NEW)
 
 - ----------------------------------------------------------------------------------------------
 ## Start with this steps
 
 #### clone this repository by 
-- save .env file into config file where the settings.py resides
 
 - ```bash
   git clone [link for this repo]
   ```
+ - save .env file into config file where the settings.py resides
+ - NOTE: .env file is updated in document whose link was shared before
+
   
 - Go to the project directory
   ```bash
@@ -47,26 +51,27 @@ Loyalty Web App
  
 - --------------------------------------------------------------------------
 
-At this point, your Django app should be running at port 8000 on your Docker host. On Docker Desktop for Mac and Docker Desktop for Windows, go to http://localhost:8000 on a web browser to see the website. If you are using Docker Machine, then docker-machine ip MACHINE_VM returns the Docker host IP address, to which you can append the port (<Docker-Host-IP>:8000).
+At this point, your Django app should be running at port 9000 on your Docker host. On Docker Desktop for Mac and Docker Desktop for Windows, go to http://localhost:9000 on a web browser to see the website. If you are using Docker Machine, then docker-machine ip MACHINE_VM returns the Docker host IP address, to which you can append the port (<Docker-Host-IP>:9000).
 - ---------------------------------------------------------------------------------------
   
- ## NEW FEATURE -----> PURCHASE POINTS
+ ## ABOUT NEW FEATUREs -----> 
+ #### 1. PURCHASE POINTS:
  
- - .env file containing razorpay credential are not include in this repo
- - .env file is sent to you via email
- - save .env file into config file where the settings.py resides
- 
- ##### again build your image by
- -  ```bash
-    docker-compose up --build
-    ```
- -  website will be live ,go to purchase points button in navbar any complete your payment
+ - website will be live ,go to purchase points button in navbar and complete your payment via razorpay
  - pay via card add card number 411111...
  - fill any random future expiry date
  - add any random cvv
- - pay ...points will be added after successfull transaction
+ - pay ...click on SUCCESS button.....points will be added after successfull transaction....record will be created and user can view        from Purchased history button
+ 
 
  
+ #### 2. Cart and Redeem:
+  
+ - from dashboard redeem any available coupen or special deal...after clicking redeem button coupen or deal will be added to cart
+ - you can remove coupen or deal from cart by clicking on cross symbol
+ - after clicking redeem button in cart coupen or specail deal would be redeemd successfully..and user can see redeem information from      Spend History button
+ - check your personal email,email would be sent to you once coupen successfully redeemed.
+
 - ----------------------------------------------------------------------------------
 #### website will be available now at above url
 - login with email id = "test1234@gmail.com" and password= "test@1234"
