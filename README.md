@@ -13,6 +13,8 @@ Loyalty Web App
 ## Start with this steps
 
 #### clone this repository by 
+- save .env file into config file where the settings.py resides
+
 - ```bash
   git clone [link for this repo]
   ```
