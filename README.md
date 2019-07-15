@@ -7,9 +7,9 @@ Loyalty Web App
 - Points History i.e Earning History,Spend History
 - User Profile 
 - Contact Us
--Purchase Points(NEW)
--Cart(NEW)
--Redeem(NEW)
+- Purchase Points(NEW)
+- Cart(NEW)
+- Redeem(NEW)
 
 - ----------------------------------------------------------------------------------------------
 ## Start with this steps
@@ -19,8 +19,11 @@ Loyalty Web App
 - ```bash
   git clone [link for this repo]
   ```
+ 
+ ### NOTE: 
+ - .env file is updated in document whose link was shared before
  - save .env file into config file where the settings.py resides
- - NOTE: .env file is updated in document whose link was shared before
+ 
 
   
 - Go to the project directory
@@ -52,7 +55,14 @@ Loyalty Web App
 - --------------------------------------------------------------------------
 
 At this point, your Django app should be running at port 9000 on your Docker host. On Docker Desktop for Mac and Docker Desktop for Windows, go to http://localhost:9000 on a web browser to see the website. If you are using Docker Machine, then docker-machine ip MACHINE_VM returns the Docker host IP address, to which you can append the port (<Docker-Host-IP>:9000).
+  
 - ---------------------------------------------------------------------------------------
+
+#### website will be available now at above url
+- login with email id = "test1234@gmail.com" and password= "test@1234"
+- visit all features mentioned in 'features section' ABOVE by clicking the link/buttons available at navigation bar
+
+- --------------------------------------------------------------------------
   
  ## ABOUT NEW FEATUREs -----> 
  #### 1. PURCHASE POINTS:
@@ -73,12 +83,7 @@ At this point, your Django app should be running at port 9000 on your Docker hos
  - check your personal email,email would be sent to you once coupen successfully redeemed.
 
 - ----------------------------------------------------------------------------------
-#### website will be available now at above url
-- login with email id = "test1234@gmail.com" and password= "test@1234"
-- visit all features mentioned in 'features section' ABOVE by clicking the link/buttons available at navigation bar
-- for profile click on circlular image and click on profile
-- now you can see your profile and can change email id,profile pic etc
-- --------------------------------------------------------------------------
+
 
 #### Links
 - HomePage: <http://localhost:8000/>
