@@ -30,7 +30,7 @@
   </div>
 
   <!-- Content Row -->
-  <div class="row">
+  <div class="row"><!--all cards will be rowwise-->
   
   
   
@@ -39,7 +39,7 @@
                
    {% for reward in rewards %}
       
-       {% if reward.points_required < current_user_points %}
+       {% if reward.points_required <= current_user_points %}
                       <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-success shadow h-100 py-2">
                           <div class="text-right"><span class="badge badge-info">
@@ -62,14 +62,14 @@
                               <br>
 
 
-                             <form action="/cart/" method="POST">
+                             <form id="RedeemForm" action="/cart/" onsubmit="btnRedeem.disabled = true; return true ;" method="POST">
                                 {% csrf_token %}
 
                               <input type="hidden" id="reward_item_id" name="reward_item_id" value={{reward.item_id}}>
 
                               <input type="hidden" id="special_deal_id" name="special_deal_id" value="0">
 
-                                <button href="{% url 'cart' %}" class="btn btn-outline-success" type="submit">Redeem</button>
+                                <button href="{% url 'cart' %}" class="btn btn-outline-success" name="btnRedeem" type="submit">Redeem</button>
                               </form> 
 
 
@@ -115,7 +115,6 @@
     {% endfor %}
 
     
-
 
 
     

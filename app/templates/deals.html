@@ -36,7 +36,7 @@
                
    {% for deal in deals %}
       
-       {% if deal.points_required < current_user_points %}
+       {% if deal.points_required <= current_user_points %}
                       <div class="col-xl-3 col-md-6 mb-4" >
                         <div class="card border-left-success shadow h-100 py-2">
                           <div class="text-right"><span class="badge badge-info">
@@ -73,14 +73,14 @@
                               
                               <br>
 
-                              <form action="/cart/" method="POST">
+                              <form action="/cart/" method="POST" onsubmit="btnRedeem.disabled = true; return true ;">
                                 {% csrf_token %}
 
                               <input type="hidden" id="reward_item_id" name="reward_item_id" value="0">
 
                               <input type="hidden" id="special_deal_id" name="special_deal_id" value={{deal.deal_id}}>
 
-                                <button href="{% url 'cart' %}" class="btn btn-outline-success" type="submit">Redeem</button>
+                                <button href="{% url 'cart' %}" class="btn btn-outline-success" name="btnRedeem" type="submit">Redeem</button>
                               </form> 
 
 

@@ -117,7 +117,9 @@ def Redeem(request):
     g_obj=Guest.objects.filter(unique_id=request.user.unique_id).first()
     c_obj=Cart.objects.filter(cart_id=request.POST['cart_id']).first()
 
-    if c_obj.reward_items != None and c_obj.special_deals == None :
+    #so much of conditions are added...bcoz if user try to click different multiple Redeem button at same time
+
+    if c_obj.reward_items!=None and c_obj.special_deals==None and request.user.points_available>0 and (c_obj.reward_items.points_required <= request.user.points_available ):
       request.user.points_available=request.user.points_available - c_obj.reward_items.points_required
       request.user.save()
 
@@ -129,7 +131,7 @@ def Redeem(request):
             
       message="Coupens is Redeemed successfully and sent to your email_id as well as on your phone"
       c_obj.delete()
-    else:
+    elif c_obj.reward_items==None and c_obj.special_deals!=None and request.user.points_available>0 and (c_obj.special_deals.points_required <= request.user.points_available ):
       request.user.points_available=request.user.points_available - c_obj.special_deals.points_required
       request.user.save()
 
@@ -141,6 +143,9 @@ def Redeem(request):
 
       message="Specail deal is Redeemed successfully and sent to your email_id as well as on your phone"
       c_obj.delete()
+    else:
+      from django.http import Http404
+      raise Http404("not found")
 
     s_obj=SpendPoints(guest=g_obj,status="completed",reward_item=c_obj.reward_items,special_deals=c_obj.special_deals)
     s_obj.save()
@@ -169,10 +174,11 @@ class earn_Points_History_Listview(LoginRequiredMixin,ListView):
     paginate_by=5
 
     def get_queryset(self):
-      r_objs=Reservations.objects.filter(guest__unique_id=self.request.user.unique_id).order_by('-date')
+      r_objs=Reservations.objects.filter(guest__unique_id=self.request.user.unique_id)#.order_by('-date')
+      
       
       if len(r_objs)!=0:
-        return r_objs
+        return r_objs[::-1]
       else:
         return [0]#this must be iterable thing..so we use list....when no history this will returned
 
@@ -188,10 +194,10 @@ class spend_Points_History_Listview(LoginRequiredMixin,ListView):
     paginate_by=5
 
     def get_queryset(self):
-      s_objs=SpendPoints.objects.filter(guest__unique_id=self.request.user.unique_id).order_by('-date')
+      s_objs=SpendPoints.objects.filter(guest__unique_id=self.request.user.unique_id)#.order_by('-date')
       
       if len(s_objs)!=0:
-        return s_objs
+        return s_objs[::-1]
       else:
         return [0]#this must be iterable thing..so we use list....when no history this will returned
 
@@ -208,10 +214,10 @@ class purchase_Points_History_Listview(LoginRequiredMixin,ListView):
     paginate_by=5
 
     def get_queryset(self):
-      p_objs=PurchaseOrder.objects.filter(user_unique_id=self.request.user.unique_id).order_by('-date')
+      p_objs=PurchaseOrder.objects.filter(user_unique_id=self.request.user.unique_id)#.order_by('-date')
       
       if len(p_objs)!=0:
-        return p_objs
+        return p_objs[::-1]
       else:
         return [0]#this must be iterable thing..so we use list....when no history this will returned
 

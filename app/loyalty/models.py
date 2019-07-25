@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from config import settings
 from users.models import CustomUser
 from django.utils import timezone
+import datetime
 import uuid
 
 # Create your models here.
@@ -24,11 +25,11 @@ class Guest(models.Model):
     # whenver user email changes guest email also should change
 	name=models.CharField(max_length=50)
 	phone= models.CharField(max_length=12,blank=True,null=True)
-	email=models.EmailField(max_length=30,blank=True)#guest email and custom user email must same
+	email=models.EmailField(max_length=30,blank=True)
 	address=models.TextField(blank=True,null=True)
 	#didnt make points_available field...we would get that from CustomUser database
-	unique_id=models.CharField(max_length=1000, blank=True,null=True)
-
+	#guest unique_id and CutstomUSer unique_id should be same ,in loyalty app and  payment tracker app it should naver cahnge
+	unique_id=models.CharField(max_length=500 ,unique=True, default=uuid.uuid4)
 
 	def __str__(self):
 		return f'{self.email }'
@@ -36,12 +37,14 @@ class Guest(models.Model):
 class Hotels(models.Model):
 
 	name=models.CharField(max_length=50)
-	image=models.ImageField(default='default.png',upload_to='hotels_pics')
+	image=models.ImageField(default='default.png',upload_to='hotels_pics',null=None,blank=True)
 	address=models.TextField()
 	contact_p_name=models.CharField(max_length=50)
 	contact_p_email=models.EmailField(max_length=30,blank=True)
 	contact_p_phone=models.CharField(max_length=12)
 	reward_ratio=models.FloatField(max_length=30)
+	unique_id=models.CharField(max_length=500, unique=True, default=uuid.uuid4)
+
 
 	def __str__(self):
 		return f'{self.name }'
@@ -51,9 +54,11 @@ class Reservations(models.Model):
 
 	guest=models.ForeignKey(Guest,on_delete=models.PROTECT)
 	hotel=models.ForeignKey(Hotels,on_delete=models.PROTECT)
-	v_t_hotel=models.DecimalField(max_digits=10, decimal_places=2)#(by this reservation only)
+	v_t_hotel=models.FloatField(max_length=30)#(by this reservation only)
 	points_obtain=models.IntegerField()#from this reservation only(v_t_hotel * hotel.reward ratio)
-	date=models.DateTimeField(default=timezone.now)
+	#we have use this datefield bcoz datetime obj cannot pass throgh api..therefore converted in string
+	date=models.CharField(max_length=50,default=datetime.datetime.now().strftime("%c"))
+	unique_id=models.CharField(max_length=500, unique=True, default=uuid.uuid4)
 
 
 	def __str__(self):
@@ -81,7 +86,7 @@ class SpendPoints(models.Model):
     #s.save()
 
 	guest=models.ForeignKey(Guest,on_delete=models.PROTECT,null=True)
-	date=models.DateTimeField(default=timezone.now)
+	date=models.CharField(max_length=50,default=datetime.datetime.now().strftime("%c"))
 	#status---> rejectedor completed 
 	status=models.CharField(max_length=50, blank=True)
 	#guest will spend points in either one of below 2......1 field would be None
@@ -144,3 +149,5 @@ class Cart(models.Model):
 
 	def __str__(self):
 		return f'from {self.user} '
+
+

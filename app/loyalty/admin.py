@@ -1,6 +1,10 @@
 from django.contrib import admin
+'''
+class GuestAdmin(admin.ModelAdmin):
+    list_display = ('name','email')
+admin.site.register(Guest,GuestAdmin)'''
 
-# Register your models here.
+
 from .models import RewardItem,Guest,Hotels,Reservations,SpecialDeals,Profile,SpendPoints,ContactUs,Cart
 # Register your models here.
 admin.site.register(RewardItem)

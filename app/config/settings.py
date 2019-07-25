@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     "users.apps.UsersConfig",
      'crispy_forms',
+     'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +148,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER =os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
-
+recipients=os.getenv('recipient')
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

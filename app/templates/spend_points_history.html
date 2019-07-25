@@ -35,7 +35,7 @@
                     <div class="article-metadata">
                       <font size="4"><spam class="text-info" >{{spend_point.reward_item.item_name}}</spam></font>
                       
-                      <small class="text-muted">&nbsp;{{ spend_point.date|date:"F d, Y" }}</small>
+                      <small class="text-muted">&nbsp;{{ spend_point.date }}</small>
                     </div>
 
                     <div class="article-metadata">
@@ -51,7 +51,7 @@
                     </div>
 
 
-                      <div class="article-metadata">
+                    <div class="article-metadata">
                        status ->
 
                         {% if spend_point.status == "rejected" %}
