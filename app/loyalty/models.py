@@ -57,7 +57,7 @@ class Reservations(models.Model):
 	v_t_hotel=models.FloatField(max_length=30)#(by this reservation only)
 	points_obtain=models.IntegerField()#from this reservation only(v_t_hotel * hotel.reward ratio)
 	#we have use this datefield bcoz datetime obj cannot pass throgh api..therefore converted in string
-	date=models.CharField(max_length=50,default=datetime.datetime.now().strftime("%c"))
+	date=models.CharField(max_length=50,default=timezone.now)
 	unique_id=models.CharField(max_length=500, unique=True, default=uuid.uuid4)
 
 
@@ -86,7 +86,7 @@ class SpendPoints(models.Model):
     #s.save()
 
 	guest=models.ForeignKey(Guest,on_delete=models.PROTECT,null=True)
-	date=models.CharField(max_length=50,default=datetime.datetime.now().strftime("%c"))
+	date=models.CharField(max_length=50,default=timezone.now)
 	#status---> rejectedor completed 
 	status=models.CharField(max_length=50, blank=True)
 	#guest will spend points in either one of below 2......1 field would be None

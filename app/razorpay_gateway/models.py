@@ -12,7 +12,7 @@ class PurchaseOrder(models.Model):
 	user_email=models.EmailField(max_length=30)
 	amount_debited=models.FloatField(max_length=20)
 	points_added=models.IntegerField()
-	date=models.CharField(max_length=50,default=datetime.datetime.now().strftime("%c"))
+	date=models.CharField(max_length=50,default=timezone.now)
 	
 	def __str__(self):
 		return self.user_email
