@@ -60,27 +60,35 @@ At this point, your Django app should be running at port 9000 on your Docker hos
 
 #### website will be available now at above url
 - login with email id = "test1234@gmail.com" and password= "test@1234"
-- visit all features mentioned in 'features section' ABOVE by clicking the link/buttons available at navigation bar
+- Django administration page will be appear,click on "view site " 
+## NOTE: 
+- don't delete db.sqlite3 
+- first go your loyalty web app repo-->app-->payment_tracker_app-->views.py---->callapi() method
+- now change BASE_URL attribute inside callapi() to your loyalty web URL e.g "http://192.168.99.100:9000/" 
+- remove this 2 lines        #locally
+-                            BASE_URL='http://127.0.0.1:8000/'
+- save file
+- make sure you have that .env file where settings.py resides in loyalty app,make sure that you have "recipient"= "your email id" to get emails
+- now run both loyalty and tracker containers
+- first go to loyalty website and go to admin panel ,just look at how many Users you have their in loyalty app database
+- also look at Guest,Profile,Reservation database,bcoz after sync new entries would be there.
+- go to payment-tracker website homepage
+- click on sync botton to sync reservation into loyalty app
+- resrvation will be shown into "already sync" section after successful sync
+- check your Users,Profile,Gust,Reservation database again ,new entries would have been created
+- check your email ,email will have email id and password for login
 
 - --------------------------------------------------------------------------
   
- ## ABOUT NEW FEATUREs -----> 
- #### 1. PURCHASE POINTS:
- 
- - website will be live ,go to purchase points button in navbar and complete your payment via razorpay
- - pay via card add card number 411111...
- - fill any random future expiry date
- - add any random cvv
- - pay ...click on SUCCESS button.....points will be added after successfull transaction....record will be created and user can view        from Purchased history button
- 
+ ## Functionality -----> 
 
+ - on clicking view site you will redirect to actual page
+ - there will be 2 sections 1.resrvation which are not sync to loyalty web app 2. which are already synced
+ - every detail of particular reservation will be shown with "sync" button
  
- #### 2. Cart and Redeem:
-  
- - from dashboard redeem any available coupen or special deal...after clicking redeem button coupen or deal will be added to cart
- - you can remove coupen or deal from cart by clicking on cross symbol
- - after clicking redeem button in cart coupen or specail deal would be redeemd successfully..and user can see redeem information from      Spend History button
- - check your personal email,email would be sent to you once coupen successfully redeemed.(your email is hard coded in .env for now for testing)
+ 
+ 
+ 
 
 - ----------------------------------------------------------------------------------
 
