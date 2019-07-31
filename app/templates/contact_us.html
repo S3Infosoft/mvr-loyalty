@@ -4,8 +4,8 @@
 {% block title %}Contact{% endblock title %}
 
   {% block extra_css %}
-<link href="{% static 'css/mycss.css' %}" rel="stylesheet" type="text/css">
-  
+
+  <link href="{% static 'css/contact_us.css' %}" rel="stylesheet" type="text/css">
   {% endblock extra_css %}
 
 {% block content %}
@@ -14,17 +14,55 @@
 
 
 
-<div class="SITE_ROOT" id="SITE_ROOT" aria-hidden="false" style="width:100%;min-width:980px;top:0;padding-bottom:0">
+		<div class="wrap-contact100 mycenter">
+			<form class="contact100-form validate-form" method="POST">
+				<span class="contact100-form-title">
+					Contact Us
+				</span>
 
-<div class="txtNew" id="comp-ij0fjv59" style="left: 745px; top: 161px; width: 235px; position: absolute; pointer-events: none;" data-packed="true"><p class="font_8" style="line-height:1.5em; text-align:center;">Tel: 123-456-7890&nbsp;</p>
-</div><div class="txtNew" id="comp-ijacaifa" style="left: 9px; top: 94px; width: 962px; position: absolute; pointer-events: none;" data-packed="true"><h4 class="font_4" style="line-height:1.4em; text-align:center;">CONTACT US</h4>
-</div><div class="style-itx321q1" id="comp-imt62xks" style="left: 190px; top: 248px; width: 600px; height: 330px; position: absolute;" data-state="    desktop left" data-dcf-columns="4"><form 
-	method="POST">{% csrf_token %}<div class="style-itx321q1wrapper" id="comp-imt62xkswrapper"><div class="style-itx321q1flex-wrapper" id="comp-imt62xksflex-wrapper"><input name="Name" class="style-itx321q1_required" id="field1" type="text" placeholder="Name *" value="" data-aid="nameField" required>
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+					<span >FULL NAME *</span>
+					<input class="input100" type="text" name="Name" placeholder="Enter Your Name" required>
+				</div>
 
-	<input name="Email" class="style-itx321q1_required" id="field2" aria-invalid="false" required="" type="text" placeholder="Email *" value="" data-aid="emailField"></div><div><input name="Subject" id="field3" aria-invalid="false" type="text" placeholder="Subject" value="" data-aid="subjectField" required=""></div><textarea name="Message" class="style-itx321q1fieldMessage" id="comp-imt62xksfieldMessage" placeholder="Message" data-aid="messageField" required=""></textarea><button class="style-itx321q1submit" id="comp-imt62xkssubmit" type="submit">Send</button></div></form></div><div class="txtNew" id="comp-ishoi88h" style="left: 0px; top: 161px; width: 253px; position: absolute; pointer-events: none;" data-packed="true"><p class="font_8" style="line-height:1.5em; text-align:center;"><object height="0"><a class="auto-generated-link" href="mailto:info@mysite.com" data-type="mail" data-content="info@mysite.com" data-auto-recognition="true">info@mysite.com</a></object></p>
-</div><div class="txtNew" id="comp-ishoj9o6" style="left: 204px; top: 161px; width: 571px; position: absolute; pointer-events: none;" data-packed="true"><p class="font_8" style="line-height:1.5em; text-align:center;">500 Terry Francois Street, San Francisco, CA 94158</p>
-</div><div class="txtNew" id="comp-ishophzl" style="left: 210px; top: 161px; width: 41px; position: absolute; pointer-events: none;" data-packed="true"><p class="font_8" style="line-height:1.5em; text-align:center;">/&nbsp;</p>
-</div><div class="txtNew" id="comp-ishoquie" style="left: 725px; top: 161px; width: 41px; position: absolute; pointer-events: none;" data-packed="true"><p class="font_8" style="line-height:1.5em; text-align:center;">/&nbsp;</p>
-</div></div></div></div></div></div></div>
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+					<span >Email *</span>
+					<input class="input100" type="text" name="Email" placeholder="Enter Your Email " required>
+				</div>
+
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span >Phone*</span>
+					<input class="input100" type="text" name="Phone" placeholder="Enter Number Phone" required>
+				</div>
+
+
+            <div class="wrap-input100 validate-input bg1" data-validate="enter subject">
+					<span >Subject*</span>
+					<input class="input100" type="text" name="Subject" placeholder="Enter Subject" required>
+				</div>
+				
+
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Please Type Your Message">
+					<span>Message*</span>
+					<textarea class="input100" name="Message" placeholder="Your message here..." required></textarea>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						<span>
+							Submit
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	
+
+
+
+	
+
+	
 
 {% endblock content %}

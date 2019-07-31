@@ -51,6 +51,7 @@ class CustomUser(auth_models.AbstractUser):#whatever field you want extra in use
     
     points_available=models.FloatField(max_length=10,default=0.0)
     unique_id=models.CharField(max_length=40,null=True,blank=True,unique=True,default=uuid.uuid4)
+    phone= models.CharField(max_length=12,blank=True,null=True)
     
 
 

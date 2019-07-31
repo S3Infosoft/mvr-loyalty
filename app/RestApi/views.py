@@ -122,7 +122,7 @@ class CreateUser():#User,Profile,Guest everything will be created once user is c
     def create_user(self,data):
         
         try:#have to create user like this ,if we crate using CustomUser() then password not craeted by django
-            user, created = CustomUser.objects.get_or_create(email=data['email'],unique_id=data['unique_id'],username=data['name']+str(random.randrange(101,5000)))
+            user, created = CustomUser.objects.get_or_create(first_name=data['first_name'],last_name=data['last_name'],email=data['email'],phone=data['phone'],unique_id=data['unique_id'],username=data['first_name']+data['last_name']+str(random.randrange(101,5000)))
             if created:
                 password=uuid.uuid4()
                 user.set_password(password)

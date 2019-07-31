@@ -23,7 +23,7 @@ def save_profile(sender, instance, **kwargs):
 		#automatically saved users profile picture while succesfull registration of user
 		instance.profile.save()
 		#automatically creates Guest when new user created
-		g_obj=Guest(name=instance.get_full_name(),email=instance.email,unique_id=instance.unique_id)
+		g_obj=Guest(name=instance.get_full_name(),phone=instance.phone,email=instance.email,unique_id=instance.unique_id)
 		g_obj.save()
 
 

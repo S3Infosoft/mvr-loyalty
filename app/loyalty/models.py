@@ -128,6 +128,7 @@ class ContactUs(models.Model):
 
 	name=models.CharField(max_length=50)
 	email=models.EmailField(max_length=30)
+	phone=models.CharField(max_length=15)
 	subject=models.CharField(max_length=300)
 	message=models.CharField(max_length=1000)
 	user=models.ForeignKey(CustomUser,on_delete=models.PROTECT,null=True)

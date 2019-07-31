@@ -30,7 +30,7 @@ class CustomUserAdmin(UserAdmin):
         (_("Personal Info"), {"fields": ("first_name", "last_name",)}),
 
 
-          (_("Extra added Fields "), {"fields": ("username", "points_available","unique_id")}),
+          (_("Extra added Fields "), {"fields": ("username", "points_available","phone","unique_id")}),
 
         
 

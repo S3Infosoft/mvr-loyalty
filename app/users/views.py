@@ -17,7 +17,8 @@ from django.views.generic import DeleteView
 from django.core.mail import send_mail
 from config import settings
 import uuid
-import os                              
+import os                         
+from django.views.decorators.csrf import csrf_exempt     
 
 
 
@@ -54,7 +55,7 @@ def deals(request):
 
 
 
-
+@csrf_exempt
 @decorators.login_required
 def contact_us(request):
   
@@ -62,6 +63,7 @@ def contact_us(request):
 
     c_obj=ContactUs(name=request.POST['Name'],
                      email=request.POST['Email'], 
+                     phone=request.POST['Phone'],
                      subject=request.POST['Subject'],
                      message=request.POST['Message'],
                      user=request.user)
