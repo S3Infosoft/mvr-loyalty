@@ -1,8 +1,5 @@
 from django.contrib import admin
-'''
-class GuestAdmin(admin.ModelAdmin):
-    list_display = ('name','email')
-admin.site.register(Guest,GuestAdmin)'''
+
 
 
 from .models import RewardItem,Guest,Hotels,Reservations,SpecialDeals,Profile,SpendPoints,ContactUs,Cart
